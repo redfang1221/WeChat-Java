@@ -1,0 +1,32 @@
+[14:13:02:811] [INFO] - org.springframework.boot.StartupInfoLogger.logStarting(StartupInfoLogger.java:55) - Starting TemplateApplication on DESKTOP-SKKUN8D with PID 5732 (D:\downloads\weChatDev\test3\template\target\classes started by JSZJZ in D:\downloads\weChatDev\test3\template)
+[14:13:02:854] [INFO] - org.springframework.boot.SpringApplication.logStartupProfileInfo(SpringApplication.java:651) - No active profile set, falling back to default profiles: default
+[14:13:04:787] [INFO] - org.springframework.data.repository.config.RepositoryConfigurationDelegate.multipleStoresDetected(RepositoryConfigurationDelegate.java:249) - Multiple Spring Data modules found, entering strict repository configuration mode!
+[14:13:04:792] [INFO] - org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:127) - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+[14:13:04:850] [INFO] - org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:187) - Finished Spring Data repository scanning in 50ms. Found 0 JDBC repository interfaces.
+[14:13:04:873] [INFO] - org.springframework.data.repository.config.RepositoryConfigurationDelegate.multipleStoresDetected(RepositoryConfigurationDelegate.java:249) - Multiple Spring Data modules found, entering strict repository configuration mode!
+[14:13:04:875] [INFO] - org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:127) - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[14:13:04:904] [INFO] - org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:187) - Finished Spring Data repository scanning in 11ms. Found 0 Redis repository interfaces.
+[14:13:05:267] [WARN] - org.mybatis.logging.Logger.warn(Logger.java:44) - Skipping MapperFactoryBean with name 'testMapper' and 'com.chinatelecom.template.server.mapper.TestMapper' mapperInterface. Bean already defined with the same name!
+[14:13:05:282] [WARN] - org.mybatis.logging.Logger.warn(Logger.java:44) - Skipping MapperFactoryBean with name 'weappMapper' and 'com.chinatelecom.template.server.mapper.WeappMapper' mapperInterface. Bean already defined with the same name!
+[14:13:05:285] [WARN] - org.mybatis.logging.Logger.warn(Logger.java:44) - No MyBatis mapper was found in '[com.chinatelecom.template.server.mapper]' package. Please check your configuration.
+[14:13:06:636] [INFO] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:108) - Tomcat initialized with port(s): 8080 (http)
+[14:13:06:659] [INFO] - org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173) - Initializing ProtocolHandler ["http-nio-8080"]
+[14:13:06:660] [INFO] - org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173) - Starting service [Tomcat]
+[14:13:06:661] [INFO] - org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173) - Starting Servlet engine: [Apache Tomcat/9.0.36]
+[14:13:06:865] [INFO] - org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173) - Initializing Spring embedded WebApplicationContext
+[14:13:06:871] [INFO] - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext(ServletWebServerApplicationContext.java:285) - Root WebApplicationContext: initialization completed in 3968 ms
+[14:13:07:615] [INFO] - org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.lambda$buildAutowiringMetadata$1(AutowiredAnnotationBeanPostProcessor.java:478) - Autowired annotation is not supported on static fields: private static java.lang.String com.chinatelecom.template.utils.WxUtils.appid
+[14:13:07:615] [INFO] - org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.lambda$buildAutowiringMetadata$1(AutowiredAnnotationBeanPostProcessor.java:478) - Autowired annotation is not supported on static fields: private static java.lang.String com.chinatelecom.template.utils.WxUtils.secret
+[14:13:08:064] [INFO] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.initialize(ExecutorConfigurationSupport.java:181) - Initializing ExecutorService 'applicationTaskExecutor'
+[14:13:08:607] [INFO] - com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:110) - HikariPool-1 - Starting...
+[14:13:09:469] [INFO] - com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:123) - HikariPool-1 - Start completed.
+[14:13:09:746] [WARN] - org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration.checkTemplateLocationExists(FreeMarkerAutoConfiguration.java:67) - Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+[14:13:09:799] [INFO] - org.apache.juli.logging.DirectJDKLog.log(DirectJDKLog.java:173) - Starting ProtocolHandler ["http-nio-8080"]
+[14:13:09:830] [INFO] - org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:220) - Tomcat started on port(s): 8080 (http) with context path ''
+[14:13:09:836] [INFO] - springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.onApplicationEvent(DocumentationPluginsBootstrapper.java:84) - Context refreshed
+[14:13:09:854] [INFO] - springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper.onApplicationEvent(DocumentationPluginsBootstrapper.java:87) - Found 1 custom documentation plugin(s)
+[14:13:09:866] [INFO] - springfox.documentation.spring.web.scanners.ApiListingReferenceScanner.scan(ApiListingReferenceScanner.java:44) - Scanning for api listing references
+[14:13:10:262] [INFO] - org.springframework.boot.StartupInfoLogger.logStarted(StartupInfoLogger.java:61) - Started TemplateApplication in 7.844 seconds (JVM running for 10.159)
+[14:13:21:820] [INFO] - org.springframework.scheduling.concurrent.ExecutorConfigurationSupport.shutdown(ExecutorConfigurationSupport.java:218) - Shutting down ExecutorService 'applicationTaskExecutor'
+[14:13:21:822] [INFO] - com.zaxxer.hikari.HikariDataSource.close(HikariDataSource.java:350) - HikariPool-1 - Shutdown initiated...
+[14:13:21:836] [INFO] - com.zaxxer.hikari.HikariDataSource.close(HikariDataSource.java:352) - HikariPool-1 - Shutdown completed.

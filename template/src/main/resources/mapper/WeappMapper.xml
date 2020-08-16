@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinatelecom.template.server.mapper.WeappMapper">
+
+    <insert id="addNewUserInfo">
+        <![CDATA[
+        insert into LW_USER
+         (id,openid,registerDate,nickName,gender,language,city,province,country,avatarUrl)
+         values
+         (#{map.id,jdbcType=VARCHAR},#{openid,jdbcType=VARCHAR},current_timestamp,#{map.nickName,jdbcType=VARCHAR},#{map.gender,jdbcType=VARCHAR},#{map.language,jdbcType=VARCHAR},#{map.city,jdbcType=VARCHAR},#{map.province,jdbcType=VARCHAR},#{map.country,jdbcType=VARCHAR},#{map.avatarUrl,jdbcType=VARCHAR})
+         ]]>
+    </insert>
+
+    <insert id="addNewUserPhone">
+        <![CDATA[
+            insert into LW_USER
+            (id,openid,registerDate,phoneNumber,countryCode)
+            values
+            (#{map.id,jdbcType=VARCHAR},#{openid,jdbcType=VARCHAR},current_timestamp,#{phoneNumber,jdbcType=VARCHAR},#{countryCode,jdbcType=VARCHAR})
+        ]]>
+    </insert>
+
+    <insert id="allocateAuthority">
+        <![CDATA[
+            insert into LW_AUTH
+            (id,uid,name)
+            values
+            (#{id,jdbcType=VARCHAR},#{uid,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR})
+        ]]>
+    </insert>
+
+    <insert id="addEntryFixedInfo">
+        <![CDATA[
+            insert into LW_ENTRY
+            (id,entryNo,entryManager,currentDate,officerId,applicantId)
+            values
+            (#{id,jdbcType=VARCHAR},#{entryNo,jdbcType=VARCHAR},#{entryManager,jdbcType=VARCHAR},current_timestamp,#{officerId,jdbcType=VARCHAR},#{applicantId,jdbcType=VARCHAR})
+        ]]>
+    </insert>
+
+    <insert id="addNewEntryInfo">
+        <![CDATA[
+            insert into LW_ENTRY
+            (id,entryNo,entryManager,currentDate,officerId,applicantId,deptName,projName,contact,tel,email,staff,description,requirement,date)
+            values
+            (#{map.id,jdbcType=VARCHAR},#{entryNo,jdbcType=VARCHAR},#{map.entryManager,jdbcType=VARCHAR},current_timestamp,#{map.officerId,jdbcType=VARCHAR},#{map.applicantId,jdbcType=VARCHAR},#{map.deptName,jdbcType=VARCHAR},#{map.projName,jdbcType=VARCHAR},#{map.contact,jdbcType=VARCHAR},#{map.tel,jdbcType=VARCHAR},#{map.email,jdbcType=VARCHAR},#{map.staff,jdbcType=VARCHAR},#{map.description,jdbcType=VARCHAR},#{map.requirement,jdbcType=VARCHAR},#{map.date,jdbcType=TIMESTAMP})
+        ]]>
+    </insert>
+
+    <update id="updateUserInfo">
+        <![CDATA[
+        UPDATE LW_USER
+        SET nickName=#{map.nickName,jdbcType=VARCHAR},gender=#{map.gender,jdbcType=VARCHAR},language=#{map.language,jdbcType=VARCHAR},city=#{map.city,jdbcType=VARCHAR},province=#{map.province,jdbcType=VARCHAR},country=#{map.country,jdbcType=VARCHAR},avatarUrl=#{map.avatarUrl,jdbcType=VARCHAR}
+        WHERE openid=#{openid,jdbcType=VARCHAR}
+        ]]>
+    </update>
+
+    <update id="updateUserPhone">
+    <![CDATA[
+        update LW_USER
+        set countryCode=#{map.countryCode,jdbcType=VARCHAR}, phoneNumber=#{map.phoneNumber,jdbcType=VARCHAR}
+        where openid=#{openid,jdbcType=VARCHAR}
+    ]]>
+    </update>
+
+    <update id="updateAuthorityName">
+        <![CDATA[
+            update LW_AUTH
+            set name = #{nickName,jdbcType=VARCHAR}
+            where uid= #{id,jdbcType=VARCHAR}
+        ]]>
+    </update>
+
+    <update id="lockThisItem">
+        <![CDATA[
+            update LW_ENTRY as t
+            set t.lock = '1'
+            where t.entryNo = #{entryNo,jdbcType=VARCHAR}
+        ]]>
+    </update>
+
+    <update id="unlockThisItem">
+        <![CDATA[
+            update LW_ENTRY as t
+            set t.lock = '0'
+            where t.entryNo = #{entryNo,jdbcType=VARCHAR}
+        ]]>
+    </update>
+
+    <update id="verifiedEntry">
+        <![CDATA[
+            update LW_ENTRY t
+            set t.lock = '1', t.verifyStatus='1'
+            where t.entryNo = #{entryNo,jdbcType=VARCHAR}
+        ]]>
+    </update>
+
+    <update id="unpassedEntry">
+        <![CDATA[
+            update LW_ENTRY t
+            set t.lock = '1', t.verifyStatus='2'
+            where t.entryNo = #{entryNo,jdbcType=VARCHAR}
+        ]]>
+    </update>
+
+    <update id="removeEntry">
+        <![CDATA[
+            update LW_ENTRY
+            set applicantStatus='0'
+            where entryNo = #{entryNo,jdbcType=VARCHAR}
+        ]]>
+    </update>
+
+    <update id="removeVerifyEntry">
+        <![CDATA[
+            update LW_ENTRY
+            set officerStatus='0'
+            where entryNo = #{entryNo,jdbcType=VARCHAR}
+        ]]>
+    </update>
+
+    <update id="modifyEntryInfo">
+        <![CDATA[
+            update LW_ENTRY
+            set deptName=#{map.deptName,jdbcType=VARCHAR},projName=#{map.projName,jdbcType=VARCHAR},contact=#{map.contact,jdbcType=VARCHAR},tel=#{map.tel,jdbcType=VARCHAR},email=#{map.email,jdbcType=VARCHAR},staff=#{map.staff,jdbcType=VARCHAR},description=#{map.description,jdbcType=VARCHAR},requirement=#{map.requirement,jdbcType=VARCHAR},date=#{map.date,jdbcType=TIMESTAMP}
+            where entryNo = #{entryNo,jdbcType=VARCHAR}
+        ]]>
+    </update>
+
+    <select id="checkNewRegister" resultType="java.lang.Integer">
+        <![CDATA[
+            select count(1) from LW_USER where openid=#{openid,jdbcType=VARCHAR}
+        ]]>
+    </select>
+
+    <select id="isAuthorityNameBlank" resultType="java.lang.Integer">
+        <![CDATA[
+            select count(1) as 'count' from
+            (select
+              t1.openid as openid,
+              t2.name as 'name'
+              from LW_USER t1
+              left join LW_AUTH t2
+              on t1.id = t2.uid) t
+            where t.openid = #{openid,jdbcType=VARCHAR} and (ISNULL(t.name) or t.name = '')
+        ]]>
+    </select>
+
+    <select id="queryIdByopenid" resultType="java.lang.String">
+        <![CDATA[
+            select id from LW_USER where openid=#{openid,jdbcType=VARCHAR}
+        ]]>
+    </select>
+
+    <select id="queryEntryInfoByentryNo" resultType="java.util.Map">
+        <![CDATA[
+            select
+                date_format(currentDate,'%Y-%m-%d') as "currentDate",
+                entryManager,
+                entryNo,
+                deptName,
+                projName,
+                contact,
+                tel,
+                email,
+                staff,
+                description,
+                requirement,
+                date_format(date,'%Y-%m-%d') as "date"
+            from LW_ENTRY
+            where entryNo = #{entryNo,jdbcType=VARCHAR} and status='1'
+        ]]>
+    </select>
+
+    <select id="checkEntryLock" resultType="java.lang.String">
+        <![CDATA[
+            select lock from LW_ENTRY where entryNo=#{entryNo,jdbcType=VARCHAR} and status='1'
+        ]]>
+    </select>
+
+    <select id="queryEntryStatus" resultType="java.lang.String">
+        <![CDATA[
+            select verifyStatus from LW_ENTRY where entryNo=#{entryNo,jdbcType=VARCHAR} and status='1'
+        ]]>
+    </select>
+
+    <select id="queryMyInfo" resultType="java.util.Map">
+        <![CDATA[
+            select avatarUrl,phoneNumber,nickName
+            from LW_USER
+            where id=#{id,jdbcType=VARCHAR} and status='1'
+        ]]>
+    </select>
+
+    <select id="queryEntryList" resultType="java.util.Map">
+        <![CDATA[
+            select
+                entryNo,
+                date_format(currentDate,'%Y-%m-%d') AS "currentDate",
+                verifyStatus as "verified"
+            from LW_ENTRY
+            where applicantId=#{id,jdbcType=VARCHAR} and applicantStatus='1' and status='1'
+            order by CONVERT(verifyStatus,SIGNED)
+        ]]>
+    </select>
+
+    <select id="queryVerifiedEntryList" resultType="java.util.Map">
+        <![CDATA[
+            select
+                entryNo,
+                date_format(currentDate,'%Y-%m-%d') AS "currentDate",
+                verifyStatus as "verified"
+            from LW_ENTRY
+            where officerId=#{id,jdbcType=VARCHAR} and officerStatus='1' and status='1'
+            order by CONVERT(verifyStatus,SIGNED)
+        ]]>
+    </select>
+
+    <select id="isEntryAdmin" resultType="java.lang.String">
+        <![CDATA[
+            select
+                level
+            from LW_AUTH
+            where uid=#{personId,jdbcType=VARCHAR} and status='1'
+        ]]>
+    </select>
+
+    <select id="queryOfficerIdByEntryNo" resultType="java.lang.String">
+        <![CDATA[
+            select
+                officerId
+            from LW_ENTRY
+            where entryNo=#{entryNo,jdbcType=VARCHAR} and status='1'
+        ]]>
+    </select>
+
+    <select id="queryOpenidById" resultType="java.lang.String">
+        <![CDATA[
+            select
+                openid
+            from LW_USER
+            where id=#{id,jdbcType=VARCHAR} and status='1'
+        ]]>
+    </select>
+
+</mapper>
