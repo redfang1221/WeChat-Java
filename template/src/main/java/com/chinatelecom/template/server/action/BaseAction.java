@@ -36,7 +36,8 @@ public class BaseAction {
     }
 
     public String getSessionId() {
-        return httpRequest.getHeader("cookie");
+        System.out.println(httpRequest.getHeader("Cookie"));
+        return httpRequest.getHeader("Cookie");
     }
 
     public JSONObject getParameters() {

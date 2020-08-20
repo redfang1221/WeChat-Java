@@ -78,7 +78,8 @@ public class WeAppController extends BaseAction {
 
         result.put("session_key", session_key);
         result.put("open_id", open_id);
-        HttpSession tempSession = getHttpSession();
+//        HttpSession tempSession = getHttpSession();
+        HttpSession tempSession =  MySessionContext.getSession(sessionid);
         tempSession.setAttribute(Constants.WX_SESSION_OPEN_ID,open_id);
         tempSession.setAttribute(Constants.WX_SESSION_KEY,session_key);
         return JSON.toJSONString(result);

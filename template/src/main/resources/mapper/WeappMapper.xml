@@ -174,7 +174,7 @@
 
     <select id="checkEntryLock" resultType="java.lang.String">
         <![CDATA[
-            select lock from LW_ENTRY where entryNo=#{entryNo,jdbcType=VARCHAR} and status='1'
+            select t.lock from LW_ENTRY t where t.entryNo=#{entryNo,jdbcType=VARCHAR} and t.status='1'
         ]]>
     </select>
 
