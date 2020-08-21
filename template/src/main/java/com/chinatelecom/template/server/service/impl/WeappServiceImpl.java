@@ -165,4 +165,9 @@ public class WeappServiceImpl implements WeappService {
         return weappMapper.queryOpenidById(uid);
     }
 
+    @Override
+    public Map<String, Object> queryOfficerInfo() {
+        return weappMapper.queryOfficerInfo();
+    }
+
 }

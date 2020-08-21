@@ -1,32 +1,67 @@
-2020-08-19 08:43:53,118 INFO org.springframework.boot.StartupInfoLogger [main] Starting TemplateApplication on DESKTOP-N8BSJC6 with PID 2268 (C:\dev\miniProgram\backend\template\target\classes started by JSZJZ in C:\dev\miniProgram\backend\template)
-2020-08-19 08:43:53,120 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
-2020-08-19 08:43:53,867 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-08-19 08:43:53,868 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2020-08-19 08:43:53,886 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 15ms. Found 0 JDBC repository interfaces.
-2020-08-19 08:43:53,897 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-08-19 08:43:53,898 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2020-08-19 08:43:53,910 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 4ms. Found 0 Redis repository interfaces.
-2020-08-19 08:43:54,000 WARN org.mybatis.logging.Logger [main] Skipping MapperFactoryBean with name 'testMapper' and 'com.chinatelecom.template.server.mapper.TestMapper' mapperInterface. Bean already defined with the same name!
-2020-08-19 08:43:54,000 WARN org.mybatis.logging.Logger [main] Skipping MapperFactoryBean with name 'weappMapper' and 'com.chinatelecom.template.server.mapper.WeappMapper' mapperInterface. Bean already defined with the same name!
-2020-08-19 08:43:54,001 WARN org.mybatis.logging.Logger [main] No MyBatis mapper was found in '[com.chinatelecom.template.server.mapper]' package. Please check your configuration.
-2020-08-19 08:43:54,363 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
-2020-08-19 08:43:54,371 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
-2020-08-19 08:43:54,371 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
-2020-08-19 08:43:54,371 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.36]
-2020-08-19 08:43:54,469 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2020-08-19 08:43:54,469 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1309 ms
-2020-08-19 08:43:54,693 INFO org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor [main] Autowired annotation is not supported on static fields: private static java.lang.String com.chinatelecom.template.utils.WxUtils.appid
-2020-08-19 08:43:54,693 INFO org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor [main] Autowired annotation is not supported on static fields: private static java.lang.String com.chinatelecom.template.utils.WxUtils.secret
-2020-08-19 08:43:55,021 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
-2020-08-19 08:43:55,333 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
-2020-08-19 08:43:55,664 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
-2020-08-19 08:43:55,821 WARN org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration [main] Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
-2020-08-19 08:43:55,852 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
-2020-08-19 08:43:55,868 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
-2020-08-19 08:43:55,868 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
-2020-08-19 08:43:55,883 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
-2020-08-19 08:43:55,883 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
-2020-08-19 08:43:56,039 INFO org.springframework.boot.StartupInfoLogger [main] Started TemplateApplication in 3.264 seconds (JVM running for 4.945)
-2020-08-19 10:22:31,824 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
-2020-08-19 10:22:31,824 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
-2020-08-19 10:22:31,839 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2020-08-21 11:03:26,632 INFO org.springframework.boot.StartupInfoLogger [main] Starting TemplateApplication on DESKTOP-N8BSJC6 with PID 10772 (C:\dev\miniProgram\backend\template\target\classes started by JSZJZ in C:\dev\miniProgram\backend\template)
+2020-08-21 11:03:26,635 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-21 11:03:27,460 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-08-21 11:03:27,461 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2020-08-21 11:03:27,482 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 16ms. Found 0 JDBC repository interfaces.
+2020-08-21 11:03:27,494 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-08-21 11:03:27,495 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-08-21 11:03:27,507 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 5ms. Found 0 Redis repository interfaces.
+2020-08-21 11:03:27,596 WARN org.mybatis.logging.Logger [main] Skipping MapperFactoryBean with name 'testMapper' and 'com.chinatelecom.template.server.mapper.TestMapper' mapperInterface. Bean already defined with the same name!
+2020-08-21 11:03:27,596 WARN org.mybatis.logging.Logger [main] Skipping MapperFactoryBean with name 'weappMapper' and 'com.chinatelecom.template.server.mapper.WeappMapper' mapperInterface. Bean already defined with the same name!
+2020-08-21 11:03:27,596 WARN org.mybatis.logging.Logger [main] No MyBatis mapper was found in '[com.chinatelecom.template.server.mapper]' package. Please check your configuration.
+2020-08-21 11:03:27,989 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2020-08-21 11:03:27,999 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2020-08-21 11:03:28,000 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-08-21 11:03:28,000 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-08-21 11:03:28,095 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-08-21 11:03:28,095 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1410 ms
+2020-08-21 11:03:28,358 INFO org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor [main] Autowired annotation is not supported on static fields: private static java.lang.String com.chinatelecom.template.utils.WxUtils.appid
+2020-08-21 11:03:28,358 INFO org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor [main] Autowired annotation is not supported on static fields: private static java.lang.String com.chinatelecom.template.utils.WxUtils.secret
+2020-08-21 11:03:28,730 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-21 11:03:29,071 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-21 11:03:29,821 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-21 11:03:29,975 WARN org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration [main] Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2020-08-21 11:03:30,004 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2020-08-21 11:03:30,021 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2020-08-21 11:03:30,027 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
+2020-08-21 11:03:30,041 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2020-08-21 11:03:30,050 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
+2020-08-21 11:03:30,296 INFO org.springframework.boot.StartupInfoLogger [main] Started TemplateApplication in 4.237 seconds (JVM running for 6.412)
+2020-08-21 11:03:50,563 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-08-21 11:03:50,564 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2020-08-21 11:03:50,569 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 5 ms
+2020-08-21 11:09:20,901 INFO org.springframework.boot.StartupInfoLogger [main] Starting TemplateApplication on DESKTOP-N8BSJC6 with PID 14600 (C:\dev\miniProgram\backend\template\target\classes started by JSZJZ in C:\dev\miniProgram\backend\template)
+2020-08-21 11:09:20,904 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2020-08-21 11:09:21,649 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-08-21 11:09:21,650 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2020-08-21 11:09:21,668 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 14ms. Found 0 JDBC repository interfaces.
+2020-08-21 11:09:21,678 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-08-21 11:09:21,678 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-08-21 11:09:21,689 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 4ms. Found 0 Redis repository interfaces.
+2020-08-21 11:09:21,768 WARN org.mybatis.logging.Logger [main] Skipping MapperFactoryBean with name 'testMapper' and 'com.chinatelecom.template.server.mapper.TestMapper' mapperInterface. Bean already defined with the same name!
+2020-08-21 11:09:21,768 WARN org.mybatis.logging.Logger [main] Skipping MapperFactoryBean with name 'weappMapper' and 'com.chinatelecom.template.server.mapper.WeappMapper' mapperInterface. Bean already defined with the same name!
+2020-08-21 11:09:21,768 WARN org.mybatis.logging.Logger [main] No MyBatis mapper was found in '[com.chinatelecom.template.server.mapper]' package. Please check your configuration.
+2020-08-21 11:09:22,112 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2020-08-21 11:09:22,119 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2020-08-21 11:09:22,120 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2020-08-21 11:09:22,120 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-08-21 11:09:22,216 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2020-08-21 11:09:22,216 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1263 ms
+2020-08-21 11:09:22,427 INFO org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor [main] Autowired annotation is not supported on static fields: private static java.lang.String com.chinatelecom.template.utils.WxUtils.appid
+2020-08-21 11:09:22,427 INFO org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor [main] Autowired annotation is not supported on static fields: private static java.lang.String com.chinatelecom.template.utils.WxUtils.secret
+2020-08-21 11:09:22,727 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-21 11:09:22,994 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2020-08-21 11:09:23,703 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2020-08-21 11:09:23,846 WARN org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration [main] Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2020-08-21 11:09:23,872 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2020-08-21 11:09:23,889 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2020-08-21 11:09:23,893 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Context refreshed
+2020-08-21 11:09:23,907 INFO springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper [main] Found 1 custom documentation plugin(s)
+2020-08-21 11:09:23,916 INFO springfox.documentation.spring.web.scanners.ApiListingReferenceScanner [main] Scanning for api listing references
+2020-08-21 11:09:24,056 INFO org.springframework.boot.StartupInfoLogger [main] Started TemplateApplication in 3.562 seconds (JVM running for 4.428)
+2020-08-21 11:09:39,202 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-08-21 11:09:39,203 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2020-08-21 11:09:39,207 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 4 ms
+2020-08-21 11:10:58,539 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [SpringContextShutdownHook] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-08-21 11:10:58,540 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
+2020-08-21 11:10:58,543 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.

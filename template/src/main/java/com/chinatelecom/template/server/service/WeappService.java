@@ -52,4 +52,6 @@ public interface WeappService {
     String queryOfficerIdByEntryNo(String entryNo);
 
     String queryOpenidById(String uid);
+
+    Map<String, Object> queryOfficerInfo();
 }

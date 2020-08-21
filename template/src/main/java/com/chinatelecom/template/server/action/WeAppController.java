@@ -210,14 +210,12 @@ public class WeAppController extends BaseAction {
         HttpSession session = MySessionContext.getSession(sessionid);
         String openid = (String) session.getAttribute(Constants.WX_SESSION_OPEN_ID);
         String entryNo = CommonUtil.getWebappNo(true);
-        String entryManager = "朱方";
-        // 管理平台添加
-        String managerId = "43edee6f00c84477ac2fa9b0bb2881e1";
+
+        map = service.queryOfficerInfo();
+
         String personId = service.getIdByopenId(openid);
 //        service.addEntryFixedInfo(managerId,personId,entryNo,entryManager);
         map.put("entryNo",entryNo);
-        map.put("entryManager",entryManager);
-        map.put("officerId",managerId);
         map.put("applicantId",personId);
         return JSONObject.toJSONString(map);
     }

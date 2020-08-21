@@ -243,4 +243,19 @@
         ]]>
     </select>
 
+    <select id="queryOfficerInfo" resultType="java.util.Map">
+        <![CDATA[
+            select
+                t1.nickName as "entryManager",
+                t1.id as "officerId"
+            from
+                LW_USER t1
+            left join LW_AUTH t2 on t1.id = t2.uid
+            where
+                t1. STATUS = '1'
+            and t2. STATUS = '1'
+            and t2. LEVEL = '3'
+        ]]>
+    </select>
+
 </mapper>
