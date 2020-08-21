@@ -301,11 +301,7 @@ public class WeAppController extends BaseAction {
         //是管理员身份（0是，1不是）
         String personId = service.getIdByopenId(openid);
         String level = service.isEntryAdmin(personId);
-        if(level.equals("1") || level.equals("3")) {
-            map.put("id","0");
-        } else {
-            map.put("id","1");
-        }
+        map.put("id",level);
         return JSONObject.toJSONString(map);
     }
 
