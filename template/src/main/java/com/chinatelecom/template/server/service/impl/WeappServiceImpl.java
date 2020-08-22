@@ -126,13 +126,13 @@ public class WeappServiceImpl implements WeappService {
     }
 
     @Override
-    public List<Map<String, Object>> queryEntryList(String personId) {
-        return weappMapper.queryEntryList(personId);
+    public List<Map<String, Object>> queryEntryList(String personId, String type) {
+        return weappMapper.queryEntryList(personId, type);
     }
 
     @Override
-    public List<Map<String, Object>> queryVerifiedEntryList(String personId) {
-        return weappMapper.queryVerifiedEntryList(personId);
+    public List<Map<String, Object>> queryVerifiedEntryList(String personId, String type) {
+        return weappMapper.queryVerifiedEntryList(personId, type);
     }
 
     @Override

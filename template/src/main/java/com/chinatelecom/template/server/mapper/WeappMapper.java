@@ -48,9 +48,9 @@ public interface WeappMapper {
 
     Map<String,Object> queryMyInfo(@Param("id") String personId);
 
-    List<Map<String, Object>> queryEntryList(@Param("id") String personId);
+    List<Map<String, Object>> queryEntryList(@Param("id") String personId, @Param("type") String type);
 
-    List<Map<String, Object>> queryVerifiedEntryList(@Param("id") String personId);
+    List<Map<String, Object>> queryVerifiedEntryList(@Param("id") String personId, @Param("type") String type);
 
     int removeEntry(@Param("entryNo") String entryNo);
 

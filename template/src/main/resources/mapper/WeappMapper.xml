@@ -193,27 +193,91 @@
     </select>
 
     <select id="queryEntryList" resultType="java.util.Map">
-        <![CDATA[
-            select
-                entryNo,
-                date_format(currentDate,'%Y-%m-%d') AS "currentDate",
-                verifyStatus as "verified"
-            from LW_ENTRY
-            where applicantId=#{id,jdbcType=VARCHAR} and applicantStatus='1' and status='1'
-            order by CONVERT(verifyStatus,SIGNED)
-        ]]>
+        <if test='type == "0"'>
+            <![CDATA[
+                select
+                    entryNo,
+                    date_format(currentDate,'%Y-%m-%d') AS "currentDate",
+                    verifyStatus as "verified"
+                from LW_ENTRY
+                where applicantId=#{id,jdbcType=VARCHAR} and applicantStatus='1' and status='1'
+                order by CONVERT(verifyStatus,SIGNED)
+            ]]>
+        </if>
+        <if test='type == "1"'>
+            <![CDATA[
+                select
+                    entryNo,
+                    date_format(currentDate,'%Y-%m-%d') AS "currentDate",
+                    verifyStatus as "verified"
+                from LW_ENTRY
+                where applicantId=#{id,jdbcType=VARCHAR} and applicantStatus='1' and status='1' and verifyStatus='0'
+            ]]>
+        </if>
+        <if test='type == "2"'>
+            <![CDATA[
+                select
+                    entryNo,
+                    date_format(currentDate,'%Y-%m-%d') AS "currentDate",
+                    verifyStatus as "verified"
+                from LW_ENTRY
+                where applicantId=#{id,jdbcType=VARCHAR} and applicantStatus='1' and status='1' and verifyStatus='1'
+            ]]>
+        </if>
+        <if test='type == "3"'>
+            <![CDATA[
+                select
+                    entryNo,
+                    date_format(currentDate,'%Y-%m-%d') AS "currentDate",
+                    verifyStatus as "verified"
+                from LW_ENTRY
+                where applicantId=#{id,jdbcType=VARCHAR} and applicantStatus='1' and status='1' and verifyStatus='2'
+            ]]>
+        </if>
     </select>
 
     <select id="queryVerifiedEntryList" resultType="java.util.Map">
-        <![CDATA[
-            select
-                entryNo,
-                date_format(currentDate,'%Y-%m-%d') AS "currentDate",
-                verifyStatus as "verified"
-            from LW_ENTRY
-            where officerId=#{id,jdbcType=VARCHAR} and officerStatus='1' and status='1'
-            order by CONVERT(verifyStatus,SIGNED)
-        ]]>
+        <if test='type == "0"'>
+            <![CDATA[
+                select
+                    entryNo,
+                    date_format(currentDate,'%Y-%m-%d') AS "currentDate",
+                    verifyStatus as "verified"
+                from LW_ENTRY
+                where officerId=#{id,jdbcType=VARCHAR} and officerStatus='1' and status='1'
+                order by CONVERT(verifyStatus,SIGNED)
+            ]]>
+        </if>
+        <if test='type == "1"'>
+            <![CDATA[
+                select
+                    entryNo,
+                    date_format(currentDate,'%Y-%m-%d') AS "currentDate",
+                    verifyStatus as "verified"
+                from LW_ENTRY
+                where officerId=#{id,jdbcType=VARCHAR} and officerStatus='1' and status='1' and verifyStatus='0'
+            ]]>
+        </if>
+        <if test='type == "2"'>
+            <![CDATA[
+                select
+                    entryNo,
+                    date_format(currentDate,'%Y-%m-%d') AS "currentDate",
+                    verifyStatus as "verified"
+                from LW_ENTRY
+                where officerId=#{id,jdbcType=VARCHAR} and officerStatus='1' and status='1' and verifyStatus='1'
+            ]]>
+        </if>
+        <if test='type == "3"'>
+            <![CDATA[
+                select
+                    entryNo,
+                    date_format(currentDate,'%Y-%m-%d') AS "currentDate",
+                    verifyStatus as "verified"
+                from LW_ENTRY
+                where officerId=#{id,jdbcType=VARCHAR} and officerStatus='1' and status='1' and verifyStatus='2'
+            ]]>
+        </if>
     </select>
 
     <select id="isEntryAdmin" resultType="java.lang.String">

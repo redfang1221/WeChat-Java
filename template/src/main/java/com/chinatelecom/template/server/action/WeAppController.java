@@ -247,13 +247,14 @@ public class WeAppController extends BaseAction {
     @RequestMapping(value = "/queryEntryList",method = RequestMethod.POST)
     public String queryEntryList() {
         String sessionid = getSessionId();
+        JSONObject data = getParameters();
         HttpSession session = MySessionContext.getSession(sessionid);
         String openid = (String) session.getAttribute(Constants.WX_SESSION_OPEN_ID);
 //        System.out.println(openid);
         String personId = service.getIdByopenId(openid);
 
         List<Map<String,Object>> list = new ArrayList<>();
-        list = service.queryEntryList(personId);
+        list = service.queryEntryList(personId,data.getString("type"));
 
         return JSONObject.toJSONString(list);
     }
@@ -266,8 +267,9 @@ public class WeAppController extends BaseAction {
         System.out.println(openid);
         String personId = service.getIdByopenId(openid);
 
+        JSONObject data = getParameters();
         List<Map<String,Object>> list = new ArrayList<>();
-        list = service.queryVerifiedEntryList(personId);
+        list = service.queryVerifiedEntryList(personId,data.getString("type"));
 
         return JSONObject.toJSONString(list);
     }

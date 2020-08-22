@@ -37,9 +37,9 @@ public interface WeappService {
 
     Map<String,Object> queryMyInfo(String personId);
 
-    List<Map<String, Object>> queryEntryList(String personId);
+    List<Map<String, Object>> queryEntryList(String personId,String type);
 
-    List<Map<String, Object>> queryVerifiedEntryList(String personId);
+    List<Map<String, Object>> queryVerifiedEntryList(String personId, String type);
 
     int removeEntry(String entryNo);
 
