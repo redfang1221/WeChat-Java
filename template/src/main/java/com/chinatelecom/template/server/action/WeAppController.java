@@ -323,7 +323,12 @@ public class WeAppController extends BaseAction {
         String entryNo = getParameters().getString("entryNo");
 //        System.out.println(entryNo);
         //去数据库查看是否已经评价，若无则解锁，若有则不操作
-        service.unlockThisItem(entryNo);
+        String status = service.checkVerified(entryNo);
+        if(status.equals("0")) {
+            service.unlockThisItem(entryNo);
+        } else {
+            service.lockThisItem(entryNo);
+        }
         return JSONObject.toJSONString(map);
     }
 

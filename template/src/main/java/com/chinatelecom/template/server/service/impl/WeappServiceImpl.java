@@ -170,4 +170,9 @@ public class WeappServiceImpl implements WeappService {
         return weappMapper.queryOfficerInfo();
     }
 
+    @Override
+    public String checkVerified(String entryNo) {
+        return weappMapper.checkVerified(entryNo);
+    }
+
 }

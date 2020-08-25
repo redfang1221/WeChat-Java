@@ -65,4 +65,6 @@ public interface WeappMapper {
     String queryOpenidById(@Param("id") String uid);
 
     Map<String, Object> queryOfficerInfo();
+
+    String checkVerified(@Param("entryNo") String entryNo);
 }

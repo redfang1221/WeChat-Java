@@ -322,4 +322,10 @@
         ]]>
     </select>
 
+    <select id="checkVerified" resultType="java.lang.String">
+        <![CDATA[
+            select verifyStatus from LW_ENTRY where entryNo=#{entryNo,jdbcType=VARCHAR} and status='1'
+        ]]>
+    </select>
+
 </mapper>

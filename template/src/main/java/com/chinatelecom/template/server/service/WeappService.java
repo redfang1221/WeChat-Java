@@ -54,4 +54,6 @@ public interface WeappService {
     String queryOpenidById(String uid);
 
     Map<String, Object> queryOfficerInfo();
+
+    String checkVerified(String entryNo);
 }
