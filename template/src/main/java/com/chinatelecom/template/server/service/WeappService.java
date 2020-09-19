@@ -56,4 +56,8 @@ public interface WeappService {
     Map<String, Object> queryOfficerInfo();
 
     String checkVerified(String entryNo);
+
+    List<Map<String, Object>> queryEntryData(String year, String month, String day);
+
+    Map<String, Object> downloadPdfById(String id);
 }

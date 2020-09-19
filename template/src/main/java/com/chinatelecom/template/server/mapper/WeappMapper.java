@@ -67,4 +67,8 @@ public interface WeappMapper {
     Map<String, Object> queryOfficerInfo();
 
     String checkVerified(@Param("entryNo") String entryNo);
+
+    List<Map<String, Object>> queryEntryData(@Param("year") String year, @Param("month") String month, @Param("day") String day);
+
+    Map<String, Object> queryEntryDataById(@Param("id") String id);
 }

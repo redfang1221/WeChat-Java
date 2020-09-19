@@ -5,9 +5,11 @@ import com.chinatelecom.template.server.mapper.WeappMapper;
 import com.chinatelecom.template.server.service.TestService;
 import com.chinatelecom.template.server.service.WeappService;
 import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -173,6 +175,19 @@ public class WeappServiceImpl implements WeappService {
     @Override
     public String checkVerified(String entryNo) {
         return weappMapper.checkVerified(entryNo);
+    }
+
+    @Override
+    public List<Map<String, Object>> queryEntryData(String year, String month, String day) {
+        if(StringUtils.isBlank(year)) year = "-1";
+        if(StringUtils.isBlank(month)) year = "-1";
+        if(StringUtils.isBlank(day)) year = "-1";
+        return weappMapper.queryEntryData(year,month,day);
+    }
+
+    @Override
+    public Map<String, Object> downloadPdfById(String id) {
+        return weappMapper.queryEntryDataById(id);
     }
 
 }

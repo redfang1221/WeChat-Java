@@ -7,9 +7,7 @@ import org.apache.commons.lang.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
@@ -22,7 +20,7 @@ public class PdfExportUtil {
             if(fileName != null && !fileName.endsWith(".pdf")){
                 fileName = fileName + ".pdf";
             }
-            fileName = URLEncoder.encode(fileName,"UTF-8");
+
             fileName = new String(fileName.getBytes("UTF-8"),"iso-8859-1");
 
             response.reset();
@@ -31,6 +29,10 @@ public class PdfExportUtil {
             response.addHeader("Pargam", "no-cache");
             response.addHeader("Cache-Control", "no-cache");
             OutputStream out = response.getOutputStream();
+//            File file = new File(fileName);
+//            file.createNewFile();
+//            OutputStream out = new BufferedOutputStream(new FileOutputStream(file));
+
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
             PdfReader pdfReader = new PdfReader(templateUrl);
@@ -48,13 +50,17 @@ public class PdfExportUtil {
             pdfStamper.close();
 
             Document document = new Document();
-            PdfCopy copy = new PdfCopy(document, out);
+            PdfCopy copy = new PdfCopy(document,out);
             document.open();
 
-            for(int i=1; i<= pdfReader.getNumberOfPages(); i++) {
-                PdfImportedPage importPage = copy.getImportedPage(new PdfReader(bos.toByteArray()), i);
-                copy.addPage(importPage);
-            }
+            PdfReader reader = new PdfReader(bos.toByteArray());
+            copy.addDocument(reader);
+            copy.freeReader(reader);
+
+//            for(int i=1; i<= pdfReader.getNumberOfPages(); i++) {
+//                PdfImportedPage importPage = copy.getImportedPage(new PdfReader(bos.toByteArray()), i);
+//                copy.addPage(importPage);
+//            }
 
             document.close();
             out.flush();

@@ -5,8 +5,9 @@
     <groupId>com.chinatelecom</groupId>
     <artifactId>template</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
-    <name>template</name>
+<!--    <packaging>war</packaging>-->
+    <packaging>jar</packaging>
+<!--    <name>template</name>-->
     <description>template</description>
 
     <parent>
