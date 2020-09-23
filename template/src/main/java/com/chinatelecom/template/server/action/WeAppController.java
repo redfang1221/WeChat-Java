@@ -135,6 +135,8 @@ public class WeAppController extends BaseAction {
         String openid = (String) session.getAttribute(Constants.WX_SESSION_OPEN_ID);
         Map<String,Object> map = new HashMap<>();
 
+        String date = data.getString("date");
+
         map.put("deptName",data.getString("deptName"));
         map.put("projName",data.getString("projName"));
         map.put("contact",data.getString("contact"));
@@ -143,7 +145,8 @@ public class WeAppController extends BaseAction {
         map.put("staff",data.getString("staff"));
         map.put("description",data.getString("description"));
         map.put("requirement",data.getString("requirement"));
-        map.put("date",data.getString("date"));
+        map.put("sDate",date.split("//s+")[0]);
+        map.put("eDate",date.split("//s+")[1]);
         map.put("currentDate",data.getString("currentDate"));
         map.put("entryManager",data.getString("entryManager"));
         map.put("applicantId",data.getString("applicantId"));
@@ -379,6 +382,8 @@ public class WeAppController extends BaseAction {
         HttpSession session = MySessionContext.getSession(sessionid);
         String openid = (String) session.getAttribute(Constants.WX_SESSION_OPEN_ID);
         Map<String, Object> map = new HashMap<>();
+        String date = data.getString("date");
+
 
         map.put("deptName", data.getString("deptName"));
         map.put("projName", data.getString("projName"));
@@ -388,7 +393,8 @@ public class WeAppController extends BaseAction {
         map.put("staff", data.getString("staff"));
         map.put("description", data.getString("description"));
         map.put("requirement", data.getString("requirement"));
-        map.put("date", data.getString("date"));
+        map.put("sDate", date.split("//s+")[0]);
+        map.put("eDate", date.split("//s+")[1]);
 
         service.modifyEntryInfo(map,data.getString("entryNo"));
         System.out.println(map);

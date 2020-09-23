@@ -41,7 +41,7 @@
     <insert id="addNewEntryInfo">
         <![CDATA[
             insert into LW_ENTRY
-            (id,entryNo,entryManager,currentDate,officerId,applicantId,deptName,projName,contact,tel,email,staff,description,requirement,date)
+            (id,entryNo,entryManager,currentDate,officerId,applicantId,deptName,projName,contact,tel,email,staff,description,requirement,eDate,sDate)
             values
             (#{map.id,jdbcType=VARCHAR},#{entryNo,jdbcType=VARCHAR},#{map.entryManager,jdbcType=VARCHAR},current_timestamp,#{map.officerId,jdbcType=VARCHAR},#{map.applicantId,jdbcType=VARCHAR},#{map.deptName,jdbcType=VARCHAR},#{map.projName,jdbcType=VARCHAR},#{map.contact,jdbcType=VARCHAR},#{map.tel,jdbcType=VARCHAR},#{map.email,jdbcType=VARCHAR},#{map.staff,jdbcType=VARCHAR},#{map.description,jdbcType=VARCHAR},#{map.requirement,jdbcType=VARCHAR},#{map.date,jdbcType=TIMESTAMP})
         ]]>
@@ -122,7 +122,7 @@
     <update id="modifyEntryInfo">
         <![CDATA[
             update LW_ENTRY
-            set deptName=#{map.deptName,jdbcType=VARCHAR},projName=#{map.projName,jdbcType=VARCHAR},contact=#{map.contact,jdbcType=VARCHAR},tel=#{map.tel,jdbcType=VARCHAR},email=#{map.email,jdbcType=VARCHAR},staff=#{map.staff,jdbcType=VARCHAR},description=#{map.description,jdbcType=VARCHAR},requirement=#{map.requirement,jdbcType=VARCHAR},date=#{map.date,jdbcType=TIMESTAMP}
+            set deptName=#{map.deptName,jdbcType=VARCHAR},projName=#{map.projName,jdbcType=VARCHAR},contact=#{map.contact,jdbcType=VARCHAR},tel=#{map.tel,jdbcType=VARCHAR},email=#{map.email,jdbcType=VARCHAR},staff=#{map.staff,jdbcType=VARCHAR},description=#{map.description,jdbcType=VARCHAR},requirement=#{map.requirement,jdbcType=VARCHAR},eDate=#{map.eDate,jdbcType=TIMESTAMP},sDate=#{map.sDate,jdbcType=TIMESTAMP}
             where entryNo = #{entryNo,jdbcType=VARCHAR}
         ]]>
     </update>
@@ -166,7 +166,7 @@
                 staff,
                 description,
                 requirement,
-                date_format(date,'%Y-%m-%d') as "date"
+                concat(date_format(sDate,'%Y-%m-%d')," 到 ",date_format(eDate,'%Y-%m-%d')) as "date"
             from LW_ENTRY
             where entryNo = #{entryNo,jdbcType=VARCHAR} and status='1'
         ]]>
@@ -343,7 +343,7 @@
                 t.staff as "进场人员",
                 t.description as "工作说明",
                 t.requirement as "资源需求",
-                date_format(t.date,'%Y-%m-%d') as "进场时间",
+                concat(date_format(t.sDate,'%Y-%m-%d')," 到 ",date_format(t.eDate,'%Y-%m-%d')) as "进场时间"
                 t.verifyStatus as "审核状态（0待审核，1通过，2未通过）"
             FROM
                 LW_ENTRY t
@@ -372,27 +372,66 @@
 
     <select id="queryEntryDataById" resultType="java.util.Map">
         <![CDATA[
-        SELECT
-            t.entryManager as "entryManager",
-            t.deptName as "deptName",
-            t.projName as "projName",
-            t.contact as "contact",
-            t.tel as "tel",
-            t.email as "email",
-            t.staff as "staff",
-            t.description as "description",
-            t.requirement as "requirement",
-            IF(t.verifyStatus=1,CONCAT(t1.nickName,'- ','审核通过'),IF(t.verifyStatus=2,CONCAT(t1.nickName,'- ','审核未通过'),'')) as "verify",
-            date_format(t.date,'%Y年%m月%d号-') as "plan"
-        FROM
-            LW_ENTRY t
-        LEFT JOIN LW_USER t1
-        ON t1.id = t.officerId
-        WHERE
-            t.id = 'aea2005ab7184d6db62c0360fb0e6225'
-          and t.status = '1'
+            SELECT
+                t.entryManager as "entryManager",
+                t.deptName as "deptName",
+                t.projName as "projName",
+                t.contact as "contact",
+                t.tel as "tel",
+                t.email as "email",
+                t.staff as "staff",
+                t.description as "description",
+                t.requirement as "requirement",
+                IF(t.verifyStatus=1,CONCAT(t1.nickName,': ','审核通过'),IF(t.verifyStatus=2,CONCAT(t1.nickName,'- ','审核未通过'),'')) as "verify",
+                concat(date_format(t.sDate,'%Y年%m月%d号-'),date_format(t.eDate,'%Y年%m月%d号')) as "plan"
+            FROM
+                LW_ENTRY t
+            LEFT JOIN LW_USER t1
+            ON t1.id = t.officerId
+            WHERE
+                t.id = 'aea2005ab7184d6db62c0360fb0e6225'
+            and t.status = '1'
             and t1.status = '1'
         ]]>
+    </select>
+
+    <select id="queryEntrySpecialData" resultType="java.util.Map">
+        <![CDATA[
+            SELECT
+                t.entryManager as "entryManager",
+                t.deptName as "deptName",
+                t.projName as "projName",
+                t.contact as "contact",
+                t.tel as "tel",
+                t.email as "email",
+                t.staff as "staff",
+                t.description as "description",
+                t.requirement as "requirement",
+                IF(t.verifyStatus=1,CONCAT(t1.nickName,': ','审核通过'),IF(t.verifyStatus=2,CONCAT(t1.nickName,'- ','审核未通过'),'')) as "verify",
+                concat(date_format(t.sDate,'%Y年%m月%d号-'),date_format(t.eDate,'%Y年%m月%d号')) as "plan"
+            FROM
+                LW_ENTRY t
+            LEFT JOIN LW_USER t1
+            ON t1.id = t.officerId
+            WHERE
+              t.status = '1'
+              and t1.status = '1'
+        ]]>
+        <if test='day != "-1" and month != "-1" and year != "-1"'>
+            <![CDATA[
+                and TO_DAYS(t.currentDate) = TO_DAYS(STR_TO_DATE(concat(#{year,jdbcType=VARCHAR},'-',#{month,jdbcType=VARCHAR},'-',#{day,jdbcType=VARCHAR}), '%Y-%m-%d'))
+            ]]>
+        </if>
+        <if test='day == "-1" and month != "-1" and year != "-1"'>
+            <![CDATA[
+                year(t.currentDate) = #{year,jdbcType=VARCHAR} and month(t.currentDate) = #{month,jdbcType=VARCHAR}
+            ]]>
+        </if>
+        <if test='day == "-1" and month == "-1" and year != "-1"'>
+            <![CDATA[
+                year(t.currentDate) = #{year,jdbcType=VARCHAR}
+            ]]>
+        </if>
     </select>
 
 </mapper>

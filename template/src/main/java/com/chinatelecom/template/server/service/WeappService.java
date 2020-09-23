@@ -60,4 +60,6 @@ public interface WeappService {
     List<Map<String, Object>> queryEntryData(String year, String month, String day);
 
     Map<String, Object> downloadPdfById(String id);
+
+    List<Map<String, Object>> downloadPdfs(String year, String month, String day);
 }

@@ -190,4 +190,13 @@ public class WeappServiceImpl implements WeappService {
         return weappMapper.queryEntryDataById(id);
     }
 
+    @Override
+    public List<Map<String, Object>> downloadPdfs(String year, String month, String day) {
+        if(StringUtils.isBlank(year)) year = "-1";
+        if(StringUtils.isBlank(month)) year = "-1";
+        if(StringUtils.isBlank(day)) year = "-1";
+        return weappMapper.queryEntrySpecialData(year,month,day);
+    }
+
+
 }

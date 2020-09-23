@@ -71,4 +71,6 @@ public interface WeappMapper {
     List<Map<String, Object>> queryEntryData(@Param("year") String year, @Param("month") String month, @Param("day") String day);
 
     Map<String, Object> queryEntryDataById(@Param("id") String id);
+
+    List<Map<String, Object>> queryEntrySpecialData(@Param("year") String year, @Param("month") String month, @Param("day") String day);
 }

@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,9 @@ import java.util.Map;
 @Api(tags = {"后台管理"})
 public class ManageController {
 
+    @Value("${template.pdf.entry}")
+    private String entryTemplate;
+
     @Autowired
     WeappService weappService;
 
@@ -39,7 +43,6 @@ public class ManageController {
         Date currentTime = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
         String sdate = formatter.format(currentTime);
-
         String fileName = sdate+"进场单";
         List<Map<String,Object>> list = weappService.queryEntryData(year,month,day);
         Map<String,Object> map = new HashMap<>();
@@ -61,11 +64,26 @@ public class ManageController {
         Date currentTime = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
         String sdate = formatter.format(currentTime);
-
         String fileName = sdate+"进场单";
         Map<String,Object> map = weappService.downloadPdfById(id);
-        String templateUrl = "D:/desktop/1.pdf";
-        PdfExportUtil.writePdf(templateUrl,fileName,map,response);
+        PdfExportUtil.writePdf(entryTemplate,fileName,map,response);
+        return null;
+    }
+
+    @ApiOperation(value = "downloadPdfs", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @RequestMapping(value = "/downloadPdfs", method = RequestMethod.GET)
+    @ApiImplicitParams({@ApiImplicitParam(name = "year", value = "年份", required = true,dataType = "String", paramType = "query",defaultValue = "2020"),
+            @ApiImplicitParam(name = "month", value = "月份", required = true,dataType = "String", paramType = "query",defaultValue = "09"),
+            @ApiImplicitParam(name = "day", value = "日期", required = true,dataType = "String", paramType = "query",defaultValue = "03")})
+    public String downloadPdfsAction(HttpServletResponse response, HttpServletRequest request) {
+        String year = request.getParameter("year");
+        String month = request.getParameter("month");
+        String day = request.getParameter("day");
+
+        String fileName = "进场单";
+        List<Map<String,Object>> list = weappService.downloadPdfs(year,month,day);
+        PdfExportUtil.writePdf2Zip(entryTemplate,fileName,list,response);
+
         return null;
     }
 
